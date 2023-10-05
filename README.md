@@ -1,2 +1,2 @@
 # Monthly-expenses
-Monthly expenses project
+Monthly expenses project using Python and Firebase database
