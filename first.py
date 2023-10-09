@@ -14,18 +14,22 @@ conf = {
 firebase = pyrebase.initialize_app(conf)
 database = firebase.database()
 
-data = {"Name": "Priya", "Rent":300, "Power Bill":10, "Groceries": 70}
 
-# database.child("Users").child("FirstPerson").set(data)
-
-priya = database.child("Users").child("FirstPerson").get()
+#Asking the user to enter the name of the person along with the expenses he made during this month.
+Name = input("Enter a name of a person:")
+Rent = int(input("Enter rent he spent for particular month:"))
+Power_Bill = int(input("Enter power bill of a person:"))
+Groceries = int(input("Enter how much money he spent for groceries:"))
+data = {"Name":Name, "Rent":Rent, "Power Bill": Power_Bill, "Groceries": Groceries}
+database.child("Users").set(data)
+priya = database.child("Users").get()
 d = priya.val()
 sum = 0 
 categories = ["Rent","Power Bill","Groceries"]
 
 for i in categories:
     if i in d:
-        sum += d[i]
+      sum += d[i]
 print("Total Monthly Expenses is",sum)
 
 database.child("Users").child("FirstPerson").update({"Total expenses":sum})
