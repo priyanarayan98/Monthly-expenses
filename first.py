@@ -1,5 +1,4 @@
 import pyrebase
-
 conf = {
    "apiKey": "AIzaSyBEdvlOtmVVGt32OEgY_iKVcJlrfb4LN8o",
   "authDomain": "weeklyexpenses-dc10c.firebaseapp.com",
@@ -22,7 +21,7 @@ for i in range(n):
   Power_Bill = int(input("Enter power bill of a person:"))
   Groceries = int(input("Enter how much money he spent for groceries:"))
   data = {"Name":Name, "Rent":Rent, "Power Bill": Power_Bill, "Groceries": Groceries}
-  database.child("Users").set(data)
+  database.child(i).update(data)
   priya = database.child("Users").get()
   d = priya.val()
   sum = 0 
@@ -32,4 +31,4 @@ for i in range(n):
       if i in d:
         sum += d[i]
   print("Total Monthly Expenses is",sum)
-  database.child("Users").update({"Total expenses":sum})
+  database.child(i).update({"Total expenses":sum})
