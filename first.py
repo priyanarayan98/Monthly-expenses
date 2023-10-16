@@ -22,13 +22,13 @@ for i in range(n):
   Groceries = int(input("Enter how much money he spent for groceries:"))
   data = {"Name":Name, "Rent":Rent, "Power Bill": Power_Bill, "Groceries": Groceries}
   database.child(i).update(data)
-  priya = database.child("Users").get()
+  priya = database.child(i).get()
   d = priya.val()
   sum = 0 
   categories = ["Rent","Power Bill","Groceries"]
 
-  for i in categories:
-      if i in d:
-        sum += d[i]
+  for j in categories:
+      if j in d:
+        sum += d[j]
   print("Total Monthly Expenses is",sum)
   database.child(i).update({"Total expenses":sum})
